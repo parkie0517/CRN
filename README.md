@@ -20,6 +20,12 @@ Moreover, CRN with offline setting yields 62.4% NDS, 57.5% mAP on nuScenes test 
 
 ## Getting Started
 
+### My Device Setting
+```
+NVIDIA TITAN RTX
+CUDA Version: 12.2
+```
+
 ### Installation
 ```shell
 # clone repo
