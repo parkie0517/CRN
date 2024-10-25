@@ -25,11 +25,11 @@ Moreover, CRN with offline setting yields 62.4% NDS, 57.5% mAP on nuScenes test 
 # clone repo
 git clone https://github.com/parkie0517/CRN.git
 
-cd CRN
+cd ./hj_CRN
 
 # setup conda environment
-conda env create --file CRN.yaml
-conda activate CRN
+conda env create --file hj_CRN.yaml
+conda activate hj_CRN
 
 # install dependencies
 pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 -f https://download.pytorch.org/whl/torch_stable.html
