@@ -45,10 +45,14 @@ python setup.py develop  # GPU required
 
 ### Data preparation
 **Step 0.** Download [nuScenes dataset](https://www.nuscenes.org/nuscenes#download).
+origianlly looked like this  
+![alt text](./readme_data/image.png)  
 
 **Step 1.** Symlink the dataset folder to `./data/nuScenes/`.
 ```
-ln -s [nuscenes root] ./data/nuScenes/
+ln -s [nuscenes root] ./data/
+# for example
+# ln -s ~/ssd1tb/nuScenes ./data/
 ```
 
 **Step 2.** Create annotation file. 
@@ -58,7 +62,8 @@ python scripts/gen_info.py
 ```
 
 **Step 3.** Generate ground truth depth.  
-*Note: this process requires LiDAR keyframes.*
+*Note: this process requires LiDAR keyframes.*  
+Takes about 15 seconds.  
 ```
 python scripts/gen_depth_gt.py
 ```
@@ -91,6 +96,8 @@ CRN
 **Training**
 ```
 python [EXP_PATH] --amp_backend native -b 4 --gpus 4
+# for example
+# python ./exps/det/CRN_r18_256x704_128x128_4key.py --amp_backend native -b 4 --gpus 4
 ```
 
 **Evaluation**  
