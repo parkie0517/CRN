@@ -1,26 +1,10 @@
 # CRN: Camera Radar Net for Accurate, Robust, Efficient 3D Perception
 
-https://github.com/youngskkim/CRN/assets/24770858/1bf85a3a-ad22-4875-ab0c-deeee347b03f
-
-> [**CRN: Camera Radar Net for Accurate, Robust, Efficient 3D Perception**](https://arxiv.org/abs/2304.00670)  
-> [Youngseok Kim](https://youngskkim.github.io/),
-> Juyeb Shin, Sanmin Kim, In-Jae Lee, 
-> [Jun Won Choi](https://www.spa.hanyang.ac.kr/),
-> [Dongsuk Kum](http://vdclab.kaist.ac.kr/)  
-> [*ICCV 2023*](https://iccv2023.thecvf.com/)
-
-
-## Abstract
-In this paper, we propose Camera Radar Net (CRN), a novel camera-radar fusion framework that generates a semantically rich and spatially accurate bird's-eye-view (BEV) feature map for various tasks.
-To overcome the lack of spatial information in an image, we transform perspective view image features to BEV with the help of sparse but accurate radar points.
-We further aggregate image and radar feature maps in BEV using multi-modal deformable attention designed to tackle the spatial misalignment between inputs.
-CRN with real-time setting operates at 20 FPS while achieving comparable performance to LiDAR detectors on nuScenes, and even outperforms at a far distance on 100m setting.
-Moreover, CRN with offline setting yields 62.4% NDS, 57.5% mAP on nuScenes test set and ranks first among all camera and camera-radar 3D object detectors.
 
 
 ## Getting Started
 
-### My Device Setting
+### My Device Specifications
 ```
 NVIDIA TITAN RTX
 CUDA Driver Version: 12.2 (can be checked using `nvidia-smi` command)
