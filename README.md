@@ -23,7 +23,7 @@ Moreover, CRN with offline setting yields 62.4% NDS, 57.5% mAP on nuScenes test 
 ### Installation
 ```shell
 # clone repo
-git clone https://github.com/youngskkim/CRN.git
+git clone https://github.com/parkie0517/CRN.git
 
 cd CRN
 
