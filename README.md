@@ -40,6 +40,10 @@ conda activate hj_CRN
 # install dependencies
 pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 -f https://download.pytorch.org/whl/torch_stable.html
 pip install pytorch-lightning==1.6.0
+# if pl keeps on downgrading torch version, then install torch and pl simultaneously (use the code below)
+# pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 -f https://download.pytorch.org/whl/torch_stable.html pytorch-lightning==1.6.0
+
+
 mim install mmcv==1.6.0
 mim install mmsegmentation==0.28.0
 mim install mmdet==2.25.2
