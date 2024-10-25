@@ -23,7 +23,7 @@ Moreover, CRN with offline setting yields 62.4% NDS, 57.5% mAP on nuScenes test 
 ### My Device Setting
 ```
 NVIDIA TITAN RTX
-CUDA Version: 12.2
+CUDA Driver Version: 12.2 (can be checked using `nvidia-smi` command)
 ```
 
 ### Installation
@@ -53,6 +53,10 @@ pip install -v -e .
 cd ..
 
 python setup.py develop  # GPU required
+# if you encounter an error while running the code above, install the cuda runtime API
+# conda install nvidia/label/cuda-12.2.0::cuda-toolkit # according to your CUDA driver version (which can be checked by `nvidia-smi` command)
+# export CUDA_HOME=$CONDA_PREFIX
+# pip install --no-build-isolation -e .
 ```
 
 ### Data preparation
