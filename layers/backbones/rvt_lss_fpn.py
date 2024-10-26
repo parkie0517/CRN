@@ -162,6 +162,9 @@ class DepthNet(nn.Module):
 
 
 class RVTLSSFPN(BaseLSSFPN):
+    """
+        Radar-assisted View Transformation LSS FPN
+    """
     def __init__(self, **kwargs):
         super(RVTLSSFPN, self).__init__(**kwargs)
 

@@ -23,7 +23,7 @@ class CameraRadarNetDet(BaseBEVDepth):
     """
 
     def __init__(self, backbone_img_conf, backbone_pts_conf, fuser_conf, head_conf):
-        super(BaseBEVDepth, self).__init__()
+        super(BaseBEVDepth, self).__init__() # python 2 way of calling super class
         self.backbone_img = RVTLSSFPN(**backbone_img_conf)
         self.backbone_pts = PtsBackbone(**backbone_pts_conf)
         self.fuser = MFAFuser(**fuser_conf)
