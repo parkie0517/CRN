@@ -93,17 +93,27 @@ CRN
 ```
 
 ### Training and Evaluation
+
+-b: batch size per device  
+-e: evaluation mode (validation set)  
+--gpus: number of gpus you want to use (gpus >= 1)  
+
+
 **Training**
 ```
 python [EXP_PATH] --amp_backend native -b 4 --gpus 4
 # for example
-# python ./exps/det/CRN_r18_256x704_128x128_4key.py --amp_backend native -b 4 --gpus 4
+# CUDA_VISIBLE_DEVICES=1 python ./exps/det/CRN_r18_256x704_128x128_4key.py --amp_backend native -b 1 --gpus 1
 ```
 
 **Evaluation**  
 *Note: use `-b 1 --gpus 1` to measure inference time.*
 ```
 python [EXP_PATH] --ckpt_path [CKPT_PATH] -e -b 4 --gpus 4
+# for example
+# CUDA_VISIBLE_DEVICES=1 python ./exps/det/CRN_r18_256x704_128x128_4key.py --ckpt_path /home/vilab/ssd1tb/hj_CRN/exps/det/CRN_r18_256x704_128x128_4key.pth -e -b 1 --gpus 1
+# or
+# CUDA_VISIBLE_DEVICES=1 python ./exps/det/CRN_r50_256x704_128x128_4key.py --ckpt_path /home/vilab/ssd1tb/hj_CRN/exps/det/CRN_r50_256x704_128x128_4key.pth -e -b 1 --gpus 1
 ```
 
 ## Model Zoo
@@ -123,10 +133,3 @@ All latency numbers are measured with batch size 1, GPU warm-up, and FP16 precis
 - [x] 3D detection checkpoints 
 - [x] 3D detection code 
 - [x] Code release 
-
-
-## Acknowledgement
-This project is based on excellent open source projects:
-- [BEVDepth](https://github.com/Megvii-BaseDetection/BEVDepth)
-- [BEVFormer](https://github.com/fundamentalvision/BEVFormer)
-- [MMDetection3D](https://github.com/open-mmlab/mmdetection3d)

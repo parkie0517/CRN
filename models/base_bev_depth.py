@@ -20,7 +20,7 @@ class BaseBEVDepth(nn.Module):
     """
 
     def __init__(self, backbone_conf, head_conf):
-        super(BaseBEVDepth, self).__init__()
+        super(BaseBEVDepth, self).__init__() # super를 호출하기 위한 python 2 방식
         self.backbone_img = BaseLSSFPN(**backbone_conf)
         self.head = BEVDepthHead(**head_conf)
 

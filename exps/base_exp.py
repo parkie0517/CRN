@@ -177,6 +177,12 @@ class BEVDepthLightningModel(LightningModule):
                  default_root_dir='./outputs/',
                  **kwargs):
         super().__init__()
+        print("BEVDepthLightningModel")
+        print("BEVDepthLightningModel")
+        print("BEVDepthLightningModel")
+        
+        
+        
         self.save_hyperparameters()
         self.gpus = gpus
         self.optimizer_config = optimizer_config

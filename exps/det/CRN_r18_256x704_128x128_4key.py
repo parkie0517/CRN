@@ -85,10 +85,17 @@ from exps.base_exp import BEVDepthLightningModel
 from models.camera_radar_net_det import CameraRadarNetDet
 
 
-class CRNLightningModel(BEVDepthLightningModel):
+class CRNLightningModel(BEVDepthLightningModel): 
     def __init__(self, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
-
+        breakpoint()
+        print(args)
+        print(kwargs)
+        print("before calling super")
+        super().__init__(*args, **kwargs) # Super를 호출하기 위한 python 3 방식
+        print("CRNLightningModel")
+        print("CRNLightningModel")
+        print("CRNLightningModel")
+        
         self.return_image = True
         self.return_depth = True
         self.return_radar_pv = True
