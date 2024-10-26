@@ -87,10 +87,7 @@ from models.camera_radar_net_det import CameraRadarNetDet
 
 class CRNLightningModel(BEVDepthLightningModel): 
     def __init__(self, *args, **kwargs) -> None:
-        breakpoint()
-        print(args)
-        print(kwargs)
-        print("before calling super")
+
         super().__init__(*args, **kwargs) # Super를 호출하기 위한 python 3 방식
         print("CRNLightningModel")
         print("CRNLightningModel")
@@ -279,6 +276,7 @@ class CRNLightningModel(BEVDepthLightningModel):
         }
         ################################################
         self.key_idxes = [-2, -4, -6]
+        breakpoint()
         self.model = CameraRadarNetDet(self.backbone_img_conf,
                                        self.backbone_pts_conf,
                                        self.fuser_conf,
