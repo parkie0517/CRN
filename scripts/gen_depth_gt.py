@@ -67,7 +67,9 @@ cam_keys = [
 
 
 def worker(info):
+    
     lidar_path = info['lidar_infos'][lidar_key]['filename']
+    breakpoint()
     points = np.fromfile(os.path.join(data_root, lidar_path),
                          dtype=np.float32,
                          count=-1).reshape(-1, 5)[..., :4]
@@ -102,13 +104,14 @@ def worker(info):
                                         f'{file_name}.bin'))
     # plt.savefig(f"{sample_idx}")
 
-
 if __name__ == '__main__':
     po = Pool(24)
-    mmcv.mkdir_or_exist(os.path.join(data_root, 'depth_gt'))
-    for info_path in INFO_PATHS:
-        infos = mmcv.load(info_path)
+    mmcv.mkdir_or_exist(os.path.join(data_root, 'depth_gt')) # detph_gt 폴더 생성
+    for info_path in INFO_PATHS: # nuscenes_infos_train.pkl, nuscenes_infos_val.pkl의 주소가 들어있음
+        infos = mmcv.load(info_path) 
         for info in infos:
             po.apply_async(func=worker, args=(info, ))
     po.close()
     po.join()
+
+
