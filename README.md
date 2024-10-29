@@ -46,7 +46,7 @@ python setup.py develop  # GPU required
 ### Data preparation
 **Step 0.** Download [nuScenes dataset](https://www.nuscenes.org/nuscenes#download).
 origianlly looked like this  
-![alt text](./readme_data/image.png)  
+![alt text](./readme_data/data_overview_before.png)  
 
 **Step 1.** Symlink the dataset folder to `./data/nuScenes/`.
 ```
