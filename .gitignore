@@ -218,3 +218,6 @@ events.out.tfevents*
 
 # vim
 .vim
+
+# nuScenes data
+data

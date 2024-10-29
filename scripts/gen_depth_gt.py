@@ -109,6 +109,7 @@ if __name__ == '__main__':
     mmcv.mkdir_or_exist(os.path.join(data_root, 'depth_gt')) # detph_gt 폴더 생성
     for info_path in INFO_PATHS: # nuscenes_infos_train.pkl, nuscenes_infos_val.pkl의 주소가 들어있음
         infos = mmcv.load(info_path) 
+        breakpoint()
         for info in infos:
             po.apply_async(func=worker, args=(info, ))
     po.close()
