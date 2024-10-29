@@ -8,6 +8,7 @@
 ```
 NVIDIA TITAN RTX
 CUDA Driver Version: 12.2 (can be checked using `nvidia-smi` command)
+Intel(R) Xeon(R) Silver 4210 CPU @ 2.20GHz
 ```
 
 ### Installation
@@ -46,7 +47,17 @@ python setup.py develop  # GPU required
 ### Data preparation
 **Step 0.** Download [nuScenes dataset](https://www.nuscenes.org/nuscenes#download).
 origianlly looked like this  
-![alt text](./readme_data/data_overview_before.png)  
+The folder structure will be as follows:
+```
+CRN
+├── data
+│   ├── nuScenes
+│   │   ├── maps
+│   │   ├── samples
+│   │   ├── sweeps
+|   |   ├── lidarseg
+|   |   ├── v1.0-trainval
+```
 
 **Step 1.** Symlink the dataset folder to `./data/nuScenes/`.
 ```
@@ -63,7 +74,8 @@ python scripts/gen_info.py
 
 **Step 3.** Generate ground truth depth.  
 *Note: this process requires LiDAR keyframes.*  
-Takes about 15 seconds.  
+This process took about 25 minutes.  
+And the ouput `depth_gt` is 8.4GB big.  
 ```
 python scripts/gen_depth_gt.py
 ```
