@@ -93,6 +93,7 @@ The folder structure will be as follows:
 CRN
 ├── data
 │   ├── nuScenes
+│   │   ├── lidarseg
 │   │   ├── nuscenes_infos_train.pkl
 │   │   ├── nuscenes_infos_val.pkl
 │   │   ├── maps
@@ -106,10 +107,12 @@ CRN
 
 ### Training and Evaluation
 
+Description of Command Line Arguments  
+```
 -b: batch size per device  
 -e: evaluation mode (validation set)  
 --gpus: number of gpus you want to use (gpus >= 1)  
-
+```
 
 **Training**
 ```
