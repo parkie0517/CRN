@@ -89,9 +89,6 @@ class CRNLightningModel(BEVDepthLightningModel):
     def __init__(self, *args, **kwargs) -> None:
 
         super().__init__(*args, **kwargs) # Super를 호출하기 위한 python 3 방식
-        print("CRNLightningModel")
-        print("CRNLightningModel")
-        print("CRNLightningModel")
         
         self.return_image = True
         self.return_depth = True
@@ -276,7 +273,6 @@ class CRNLightningModel(BEVDepthLightningModel):
         }
         ################################################
         self.key_idxes = [-2, -4, -6]
-        breakpoint()
         self.model = CameraRadarNetDet(self.backbone_img_conf,
                                        self.backbone_pts_conf,
                                        self.fuser_conf,

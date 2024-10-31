@@ -111,14 +111,19 @@ Description of Command Line Arguments
 ```
 -b: batch size per device  
 -e: evaluation mode (validation set)  
---gpus: number of gpus you want to use (gpus >= 1)  
+--gpus: specify the number of gpus you want to use (gpus >= 1)  
+--amp_backend
+    native: use PyTorch AMP (defualt value)
+    apex: use NVIDIA APEX
 ```
 
 **Training**
 ```
 python [EXP_PATH] --amp_backend native -b 4 --gpus 4
 # for example
-# CUDA_VISIBLE_DEVICES=1 python ./exps/det/CRN_r18_256x704_128x128_4key.py --amp_backend native -b 1 --gpus 1
+# CUDA_VISIBLE_DEVICES=0 python ./exps/det/CRN_r18_256x704_128x128_4key.py --amp_backend native -b 1 --gpus 1
+# or
+# CUDA_VISIBLE_DEVICES=0 python ./exps/det/CRN_r50_256x704_128x128_4key.py --amp_backend native -b 32 --gpus 1
 ```
 
 **Evaluation**  
