@@ -381,7 +381,6 @@ class BaseLSSFPN(nn.Module):
         # torch.Size([6, 3, 256, 704])
         imgs = imgs.flatten().view(batch_size * num_sweeps * num_cams,
                                    num_channels, imH, imW)
-        breakpoint()
         img_feats = self.img_backbone(imgs) # resnet.py의 forward()로 이동
         img_feats = self.img_neck(img_feats)[0] # second_fpn.py의 forward()로 이동 
         

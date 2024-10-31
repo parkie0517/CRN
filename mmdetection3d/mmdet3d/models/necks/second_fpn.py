@@ -77,12 +77,24 @@ class SECONDFPN(BaseModule):
 
         Args:
             x (torch.Tensor): 4D Tensor in (N, C, H, W) shape.
+            when running CRN ResNet18, x is tuple
 
         Returns:
             list[torch.Tensor]: Multi-level feature maps.
         """
         assert len(x) == len(self.in_channels)
+        
+        """
+            ups = []
+            
+            for i, deblock in enumerate(self.deblocks):
+                # Get the deblock function at the current index
+                result = deblock(x[i])
+                ups.append(result)
+        """
+        # the comment block above is the expansion of the code below
         ups = [deblock(x[i]) for i, deblock in enumerate(self.deblocks)]
+        
 
         if len(ups) > 1:
             out = torch.cat(ups, dim=1)
