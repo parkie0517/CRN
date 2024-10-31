@@ -315,7 +315,7 @@ class BEVDepthLightningModel(LightningModule):
                     mats[key] = value.cuda()
             if self.return_radar_pv:
                 pts_pv = pts_pv.cuda()
-        preds = self(sweep_imgs, mats,
+        preds = self(sweep_imgs, mats, # CRN_r**.py 파일에서 forward()함수로 이동함.
                      pts_pv=pts_pv,
                      is_train=False)
         if isinstance(self.model, torch.nn.parallel.DistributedDataParallel):

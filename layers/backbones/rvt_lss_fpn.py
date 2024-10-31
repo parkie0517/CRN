@@ -248,7 +248,7 @@ class RVTLSSFPN(BaseLSSFPN):
 
         Args:
             sweep_index (int): Index of sweeps.
-            sweep_imgs (Tensor): Input images.
+            sweep_imgs (Tensor): Input images. # 이제부터 크기가 torch.Size([B, 1, 6, 3, 256, 704])
             mats_dict (dict):
                 sensor2ego_mats(Tensor): Transformation matrix from
                     camera to ego.
@@ -278,7 +278,7 @@ class RVTLSSFPN(BaseLSSFPN):
             img_width = sweep_imgs.shape
 
         # extract image feature
-        img_feats = self.get_cam_feats(sweep_imgs)
+        img_feats = self.get_cam_feats(sweep_imgs) # base_lss_fpn의 get cam feats()로 이동.
         if self.times is not None:
             t2.record()
             torch.cuda.synchronize()
@@ -397,7 +397,7 @@ class RVTLSSFPN(BaseLSSFPN):
 
         batch_size, num_sweeps, num_cams, num_channels, img_height, \
             img_width = sweep_imgs.shape
-        key_frame_res = self._forward_single_sweep(
+        key_frame_res = self._forward_single_sweep( # 같은 함수 내에서 forward_single_sweep()으로 이동
             0,
             sweep_imgs[:, 0:1, ...],
             mats_dict,

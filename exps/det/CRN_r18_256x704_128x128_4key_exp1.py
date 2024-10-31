@@ -279,7 +279,7 @@ class CRNLightningModel(BEVDepthLightningModel):
                                        self.head_conf)
 
     def forward(self, sweep_imgs, mats, is_train=False, **inputs):
-        return self.model(sweep_imgs, mats, sweep_ptss=inputs['pts_pv'], is_train=is_train)
+        return self.model(sweep_imgs, mats, sweep_ptss=inputs['pts_pv'], is_train=is_train) # camera_radar_net_det.py의 forward()함수로 이동
 
     def training_step(self, batch):
         if self.global_rank == 0:
@@ -342,8 +342,7 @@ class CRNLightningModel(BEVDepthLightningModel):
             gt_boxes_3d = [gt_box.cuda() for gt_box in gt_boxes_3d]
             gt_labels_3d = [gt_label.cuda() for gt_label in gt_labels_3d]
         with torch.no_grad():
-            breakpoint()
-            preds, depth_preds = self(sweep_imgs, mats, # forward로 들어가는지 확인하기
+            preds, depth_preds = self(sweep_imgs, mats,
                                       pts_pv=pts_pv,
                                       is_train=True)
 

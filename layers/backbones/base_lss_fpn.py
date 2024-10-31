@@ -300,8 +300,8 @@ class BaseLSSFPN(nn.Module):
 
         self.depth_channels, _, _, _ = self.frustum.shape
 
-        self.img_backbone = build_backbone(img_backbone_conf)
-        self.img_neck = build_neck(img_neck_conf)
+        self.img_backbone = build_backbone(img_backbone_conf) # ResNet
+        self.img_neck = build_neck(img_neck_conf) # FPN structure
         self.depth_net = self._configure_depth_net(depth_net_conf)
 
         self.img_neck.init_weights()
@@ -376,10 +376,15 @@ class BaseLSSFPN(nn.Module):
     def get_cam_feats(self, imgs):
         """Get feature maps from images."""
         batch_size, num_sweeps, num_cams, num_channels, imH, imW = imgs.shape
-
+        # torch.Size([1, 1, 6, 3, 256, 704])
+        # changed to
+        # torch.Size([6, 3, 256, 704])
         imgs = imgs.flatten().view(batch_size * num_sweeps * num_cams,
                                    num_channels, imH, imW)
-        img_feats = self.img_neck(self.img_backbone(imgs))[0]
+        breakpoint()
+        img_feats = self.img_backbone(imgs) # resnet.py의 forward()로 이동
+        img_feats = self.img_neck(img_feats)[0] # second_fpn.py의 forward()로 이동 
+        
         img_feats = img_feats.reshape(batch_size, num_sweeps, num_cams,
                                       img_feats.shape[1], img_feats.shape[2],
                                       img_feats.shape[3])

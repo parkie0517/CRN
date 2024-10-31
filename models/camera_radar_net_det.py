@@ -56,12 +56,12 @@ class CameraRadarNetDet(BaseBEVDepth):
         }
 
     def forward(self,
-                sweep_imgs,
+                sweep_imgs, # torch.Size([B, num_sweeps, 6, 3, W, H])
                 mats_dict,
-                sweep_ptss=None,
+                sweep_ptss=None, # torch.Size([B, num_sweeps, 6, 1536, 5])
                 is_train=False
                 ):
-        """Forward function for BEVDepth
+        """Forward function for BEVDepth (CRN)
 
         Args:
             sweep_imgs (Tensor): Input images.
@@ -95,7 +95,7 @@ class CameraRadarNetDet(BaseBEVDepth):
             fused, _ = self.fuser(feats)
             preds, _ = self.head(fused)
             return preds, depth
-        else:
+        else: # test or validation
             if self.idx < 100:  # skip few iterations for warmup
                 self.times = None
             elif self.idx == 100:
@@ -103,7 +103,7 @@ class CameraRadarNetDet(BaseBEVDepth):
 
             ptss_context, ptss_occupancy, self.times = self.backbone_pts(sweep_ptss,
                                                                          times=self.times)
-            feats, self.times = self.backbone_img(sweep_imgs,
+            feats, self.times = self.backbone_img(sweep_imgs, # rvt_lss_fpn.py의 forward함수로 이동함
                                                   mats_dict,
                                                   ptss_context,
                                                   ptss_occupancy,
