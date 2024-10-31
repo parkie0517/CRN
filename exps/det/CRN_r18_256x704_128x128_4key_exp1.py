@@ -79,7 +79,7 @@ FPS: 29.38
 import torch
 from utils.torch_dist import synchronize
 
-from exps.base_cli import run_cli
+from exps.base_cli_exp1 import run_cli
 from exps.base_exp import BEVDepthLightningModel
 
 from models.camera_radar_net_det import CameraRadarNetDet
@@ -342,6 +342,7 @@ class CRNLightningModel(BEVDepthLightningModel):
             gt_boxes_3d = [gt_box.cuda() for gt_box in gt_boxes_3d]
             gt_labels_3d = [gt_label.cuda() for gt_label in gt_labels_3d]
         with torch.no_grad():
+            breakpoint()
             preds, depth_preds = self(sweep_imgs, mats, # forward로 들어가는지 확인하기
                                       pts_pv=pts_pv,
                                       is_train=True)

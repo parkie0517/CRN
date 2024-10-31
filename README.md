@@ -136,6 +136,14 @@ python [EXP_PATH] --ckpt_path [CKPT_PATH] -e -b 4 --gpus 4
 # CUDA_VISIBLE_DEVICES=1 python ./exps/det/CRN_r50_256x704_128x128_4key.py --ckpt_path /home/vilab/ssd1tb/hj_CRN/exps/det/CRN_r50_256x704_128x128_4key.pth -e -b 1 --gpus 1
 ```
 
+**Experiment**
+```
+# concat experiment
+# 과제 5-1
+CUDA_VISIBLE_DEVICES=1 python ./exps/det/CRN_r18_256x704_128x128_4key_exp1.py --ckpt_path /home/vilab/ssd1tb/hj_CRN/exps/det/CRN_r18_256x704_128x128_4key.pth -e -b 1 --gpus 1
+
+```
+
 ## Model Zoo
 All models use 4 keyframes and are trained without CBGS.  
 All latency numbers are measured with batch size 1, GPU warm-up, and FP16 precision.
