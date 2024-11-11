@@ -82,7 +82,7 @@ from utils.torch_dist import synchronize
 from exps.base_cli_exp1 import run_cli
 from exps.base_exp import BEVDepthLightningModel
 
-from models.camera_radar_net_det import CameraRadarNetDet
+from models.camera_radar_net_det_exp1 import CameraRadarNetDet
 
 
 class CRNLightningModel(BEVDepthLightningModel): 

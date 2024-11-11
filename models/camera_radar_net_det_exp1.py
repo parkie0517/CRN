@@ -83,6 +83,7 @@ class CameraRadarNetDet(BaseBEVDepth):
         Returns:
             tuple(list[dict]): Output results for tasks.
         """
+        
         if is_train:
             self.time = None
 
@@ -100,7 +101,7 @@ class CameraRadarNetDet(BaseBEVDepth):
                 self.times = None
             elif self.idx == 100:
                 self.times = self.times_dict
-                
+            breakpoint()
             ptss_context, ptss_occupancy, self.times = self.backbone_pts(sweep_ptss,
                                                                          times=self.times)
             feats, self.times = self.backbone_img(sweep_imgs, # rvt_lss_fpn.py의 forward함수로 이동함
